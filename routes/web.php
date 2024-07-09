@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PersonsController;
 
 # Ruta de Login.
 Route::get('/', [AuthController::class, 'getViewLogin'])->name('login')->middleware('guest');
@@ -18,4 +19,5 @@ Route::get('/logout', [AuthController::class, 'authLogout']);
 
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'getViewDashboard']);
+    Route::get('/dashboard/personas', [PersonsController::class, 'getViewPersons']);
 });
