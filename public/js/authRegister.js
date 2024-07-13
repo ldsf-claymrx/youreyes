@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const form = event.target;
         const formData = new FormData(form);
         const csrfToken = form.querySelector('input[name="_token"]').value;
+        const URL = form.querySelector('input[name="url"]').value;
 
-        fetch('/register', {
+        fetch(URL + '/register', {
             method: 'POST',
             body: formData,
             headers: {

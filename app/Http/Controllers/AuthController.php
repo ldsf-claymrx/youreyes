@@ -106,7 +106,7 @@ class AuthController extends Controller
             $request->session()->regenerate();    
             return response()->json([
                 'status' => 'success',
-                'redirect' => '/dashboard'
+                'redirect' => url('/dashboard')
             ]);
         }
 

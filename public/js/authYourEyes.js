@@ -5,11 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const form = event.target;
         const formData = new FormData(form);
         const csrfToken = form.querySelector('input[name="_token"]').value;
+        const URL = form.querySelector('input[name="url"]').value;
 
         document.getElementById('email-error').innerText = '';
         document.getElementById('password-error').innerText = '';
 
-        fetch('/auth', {
+        fetch(URL + '/auth', {
             method: 'POST',
             body: formData,
             headers: {

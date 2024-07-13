@@ -10,7 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
-        <div class="flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900">
+        <div class="flex flex-col items-center justify-center px-6 pt-8 mx-auto pt:mt-0 dark:bg-gray-900">
             <a href="" class="flex items-center justify-center mb-8 text-2xl font-bold lg:mb-10 dark:text-white">
                 <img src="{{ asset('/img/logo.png') }}" class="mr-4 h-11" alt="CCA Logo">
             </a>
@@ -58,6 +58,7 @@
                         </div>
                     </div>
                     
+                    <input type="hidden" name="url" value="{{ url('') }}">
                     <br><br>
                     <div class="text-sm font-semibold text-center text-gray-500">
                         YourEyes&reg; <br>

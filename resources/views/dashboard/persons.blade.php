@@ -34,8 +34,11 @@
         </button>
         
 
-        <br><br>
+        
 
+    </div>
+
+    <div class="container mx-auto">
         <table id="example" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" style="width:100%">
             <thead class="text-xs text-white uppercase bg-gray-800 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -63,13 +66,13 @@
                         <td class="px-6 py-4">{{ $person->birthdate }}</td>
                         <td class="px-6 py-4">
                             @if ($person->category == 1)
-                                <span class="bg-blue-500 text-gray-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Señor</span>
+                                <span class="bg-blue-500 text-gray-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ $person->category_name }}</span>
                             @elseif ($person->category == 2)
-                                <span class="bg-yellow-300 text-gray-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Señora</span>
+                                <span class="bg-yellow-300 text-gray-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ $person->category_name }}</span>
                             @elseif ($person->category == 3)
-                                <span class="bg-green-400 text-gray-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Jovén</span>
+                                <span class="bg-green-400 text-gray-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ $person->category_name }}</span>
                             @elseif ($person->category == 4)
-                                <span class="bg-red-500 text-gray-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Señorita</span>
+                                <span class="bg-red-500 text-gray-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ $person->category_name }}</span>
                             @endif
                         </td>
                         <td class="px-6 py-4">
@@ -79,36 +82,12 @@
                             <span class="bg-green-400 text-gray-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Femenino</span>
                             @endif
                         </td>
-                        <td class="px-6 py-4">
-                            @if ($person->civil_status == 1)
-                                Casado(a)
-                            @elseif($person->civil_status == 2)
-                                Divorciado(a)
-                            @elseif($person->civil_status == 3)
-                                Union Libre
-                            @elseif($person->civil_status == 4)
-                                Viudo(a)
-                            @elseif($person->civil_status == 5)
-                                Soltero(a)
-                            @elseif($person->civil_status == 6)
-                                Otro
-                            @endif
-                        </td>
+                        <td class="px-6 py-4">{{ $person->civil_status_name }}</td>
                         <td class="px-6 py-4">{{ $person->address }}</td>
                         <td class="px-6 py-4"><a class="text-blue-600 hover:underline dark:text-blue-500" href="tel:{{ $person->phone_number }}">{{ $person->phone_number }}</a></td>
                         <td class="px-6 py-4">{{ $person->facebook }}</td>
                         <td class="px-6 py-4"><a class="text-blue-600 hover:underline dark:text-blue-500" href="mailto:{{ $person->email }}">{{ $person->email }}</a></td>
-                        <td class="px-6 py-4">
-                            @if ($person->media == 1)
-                                Volante
-                            @elseif($person->media == 2)
-                                Facebook
-                            @elseif($person->media == 3)
-                                Radio
-                            @elseif($person->media == 4)
-                                Invitación Personal
-                            @endif
-                        </td>
+                        <td class="px-6 py-4">{{ $person->media_name }}</td>
                         <td class="px-6 py-4">{{ $person->personal_invitation }}</td>
                         <td class="px-6 py-4">
                             @if ($person->do_you_congregate == 1)
@@ -146,7 +125,6 @@
                 </tr>
             </tfoot>
         </table>
-
     </div>
 
 
@@ -177,6 +155,46 @@
                 <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellidos</label>
                 <input type="text" name="lastname" id="lastname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="--Ingrese su apellidos--" required>
             </div>
+            <div class="mb-6">
+                <label for="birthdate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de Nacimiento</label>
+                <input type="date" name="birthdate" id="birthdate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+            </div>
+            <div class="mb-6">
+                <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoría</label>
+                <select id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="" selected disabled>--Selecciona una opción--</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="first_time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">¿Asiste por primera vez?</label>
+                <select id="first_time" name="first_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="" selected disabled>--Selecciona una opción--</option>
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="sex" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sexo</label>
+                <select id="sex" name="sex" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="" selected disabled>--Selecciona una opción--</option>
+                    <option value="1">Masculino</option>
+                    <option value="2">Femenino</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="civil_status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado Civil</label>
+                <select id="civil_status" name="civil_status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="" selected disabled>--Selecciona una opción--</option>
+                    @foreach ($civilStatus as $status)
+                        <option value="{{ $status->id }}">{{ $status->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            
             
             <button type="submit" class="toverflow-y-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                 Registrar Persona
@@ -192,7 +210,7 @@
         new DataTable('#example', {
             paging: false,
             scrollCollapse: true,
-            scrollY: '50vh'
+            scrollY: '80vh'
         });
     </script>
 @endsection
